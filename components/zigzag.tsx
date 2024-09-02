@@ -36,7 +36,7 @@ export default function Zigzag() {
               >
                 <Image
                   // className="max-w-full mx-auto md:max-w-none h-auto"
-                  src="/images/try.webp"
+                  src="/images/image-13.webp"
                   width={512}
                   height={512}
                   priority
@@ -103,7 +103,7 @@ export default function Zigzag() {
               >
                 <Image
                   className="max-w-full mx-auto md:max-w-none h-auto"
-                  src="/images/poses.jpeg"
+                  src="/images/image-11.webp"
                   width={512}
                   height={512}
                   priority

@@ -1,4 +1,37 @@
+"use client";
+import emailjs from "emailjs-com";
+import { useState, FormEvent } from "react";
+
 export default function Newsletter() {
+  const [email, setEmail] = useState("");
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(e.target.value);
+  };
+
+  const sendEmail = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    emailjs
+      .send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+        {
+          message: "New client wants to connect: `" + email + "`",
+        },
+        process.env.NEXT_PUBLIC_EMAILJS_USER_ID!
+      )
+      .then(
+        () => {
+          console.log("SUCCESS!");
+          alert("We connect with you soon!");
+        },
+        (error) => {
+          console.log("FAILED...", error.text);
+        }
+      );
+  };
+
   return (
     <section>
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
@@ -40,7 +73,10 @@ export default function Newsletter() {
             </svg>
           </div>
 
-          <div className="relative flex flex-col lg:flex-row justify-between items-center">
+          <div
+            id="contact"
+            className="relative flex flex-col lg:flex-row justify-between items-center"
+          >
             {/* CTA content */}
             <div className="mb-6 lg:mr-16 lg:mb-0 text-center lg:text-left lg:w-1/2">
               <h3 className="h3 text-white mb-2">Stay in the loop</h3>
@@ -50,23 +86,22 @@ export default function Newsletter() {
             </div>
 
             {/* CTA form */}
-            <form className="w-full lg:w-1/2">
+            <form className="w-full lg:w-1/2" onSubmit={sendEmail}>
               <div className="flex flex-col sm:flex-row justify-center max-w-xs mx-auto sm:max-w-md lg:max-w-none">
-                {/* <input
+                <input
                   type="email"
                   className="w-full appearance-none bg-purple-700 border border-purple-500 focus:border-purple-300 rounded-sm px-4 py-3 mb-2 sm:mb-0 sm:mr-2 text-white placeholder-purple-400"
                   placeholder="Your best email…"
                   aria-label="Your best email…"
-                /> */}
-                <a
-                  className="btn text-purple-600 bg-purple-100 hover:bg-white shadow"
-                  href="mailto:p.iglaev@gmail.com"
+                  onChange={handleChange}
+                />
+                <button
+                  className="btn text-purple-700 border bg-white hover:bg-purple-700 hover:text-white w-full"
+                  type="submit"
                 >
-                  I'm Interested
-                </a>
+                  Submit
+                </button>
               </div>
-              {/* Success message */}
-              {/* <p className="text-center lg:text-left lg:absolute mt-2 opacity-75 text-sm">Thanks for subscribing!</p> */}
             </form>
           </div>
         </div>

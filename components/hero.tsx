@@ -46,21 +46,21 @@ export default function Hero() {
           {/* Section header */}
           <div className="max-w-3xl mx-auto text-center pb-12 md:pb-16">
             <h1 className="h1 mb-4" data-aos="fade-up">
-              Transform Your Fashion E-Commerce
+              Transform Your Fashion E&#8209;Commerce
             </h1>
             <p
               className="text-xl text-gray-400 mb-8"
               data-aos="fade-up"
               data-aos-delay="200"
             >
-              Enhance customer engagement and reduce returns with our
-              cutting-edge AI-powered virtual try-on solution.
+              Boost customer engagement and cut down on returns with our
+              state-of-the-art AI-powered virtual try-on solution.
             </p>
             <div className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center">
               <div data-aos="fade-up" data-aos-delay="400">
                 <a
                   className="btn text-white bg-purple-600 hover:bg-purple-700 w-full mb-4 sm:w-auto sm:mb-0"
-                  href="mailto:p.iglaev@gmail.com"
+                  href="#contact"
                 >
                   I'm Interested
                 </a>
